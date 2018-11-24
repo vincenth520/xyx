@@ -1,0 +1,36 @@
+function pratice(){
+  console.log('单机');
+}
+
+function battle(){
+  console.log('好友对战')
+}
+
+function rank(){
+  console.log('排行榜')
+}
+
+
+function addMenu(){
+  [
+    [248,750,'单机练习',pratice],
+    [248,900,'好友约战',battle],
+    [248,1050,"好友排行",rank],
+  ].map((btnConfig)=>{
+    go.common.addBtn({
+      x:btnConfig[0],
+      y:btnConfig[1],
+      text:btnConfig[2],
+      callback:btnConfig[3],
+    })
+  })
+}
+
+class Menu extends Phaser.State{
+  create(){
+    this.add.image(0,0,'bg_menu')
+    addMenu()
+  }
+}
+
+module.exports = Menu
